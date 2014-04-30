@@ -1,0 +1,17 @@
+<html ng-app='contacts'>
+<head>
+	<title></title>
+</head>
+<body>
+	<div ng-controller='ContactsInputController'>
+		type: <textarea ng-model='type'></textarea>
+		value: <textarea ng-model='value'></textarea>
+		<button ng-click='add()'></button>
+	</div>
+	<div ng-controller='ContactsController'>
+		<div ng-repeat='contact in contacts'>{{contact.type}} : {{contact.value}}</div>
+	</div>
+	<script type="text/javascript" src='js/angular.min.js'></script>
+	<script type="text/javascript" src ='js/options.js'></script>
+</body>
+</html>

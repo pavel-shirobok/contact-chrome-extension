@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Contacts for freelancers",
+  "version": "0.1",
+
+  "description": "represent contacts for freelancer",
+
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "options_page": "options.html",
+  
+  "browser_action": {
+    "default_title": "Contacts for freelancers",
+    "default_icon": "./img/icon-16.png",
+    "default_popup": "popup.html"
+  },
+
+  "icons": { "16":   "./img/icon-16.png",
+              "48":  "./img/icon-48.png",
+              "128": "./img/icon-128.png"
+           }
+}
