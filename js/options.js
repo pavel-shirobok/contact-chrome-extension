@@ -5,7 +5,7 @@ app.directive('ngxTest', [function (){
 	return {
       link: function(scope, elem, attr, ngModel) {
       	scope.$watch('type + value', function(){
-      		var disabled = scope.type=='Choose type' || scope.value.length == 0;
+      		var disabled = scope.type=='Choose type' || (scope.value && scope.value.length == 0);
       		console.log(disabled);
       		console.log($(elem));
       		$(elem).attr('disabled', disabled);
@@ -19,11 +19,7 @@ app.factory('ContactsList', ['$rootScope', function ($rootScope) {
 	var list;
 
 	if(localStorage['list'] == undefined){
-		list = [
-				{id:'121',type:"site", value:"http://ramshteks.com"},
-				{id:'122',type:"skype", value:"shirobok-pavel"},
-				{id:'123',type:"email", value:"pavel.shirobok@gmail.com"}
-			];
+		list = [];
 		flush();
 	}
 
