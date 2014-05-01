@@ -1,17 +1,70 @@
+<!DOCTYPE html>
 <html ng-app='contacts'>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+
 </head>
-<body>
-	<div ng-controller='ContactsInputController'>
-		type: <textarea ng-model='type'></textarea>
-		value: <textarea ng-model='value'></textarea>
-		<button ng-click='add()'></button>
+<body class='container-fluid'>
+	<div class='row' style='margin:50px 0px'>
+		<div class='col-md-2'></div>
+		<div class='col-md-8' >
+			<div class='row' ng-controller='ContactsInputController'>
+				<div class='col-md-3' style='padding-right:0px'>
+					
+					<li  class="dropdown" style='list-style-type:none'>
+
+						<button class='btn btn-default dropdown-toggle' style='width:100%;border-top-right-radius: 0px;border-bottom-right-radius: 0px;'>{{type}} <span class="caret"></span></button>
+					  	<ul class="dropdown-menu">
+							<li ng-repeat="choice in items">
+								<a ng-click="select(choice)" style='cursor:pointer'>{{choice}}</a>
+							</li>
+						</ul>
+					</li>
+
+				</div>
+				<div class='col-md-6' style='padding-right:0px; padding-left:0px'>
+					<input class='form-control' type='text' style='width:100%; border-radius:0px' ng-model='value'></input>
+				</div>
+				<div class='col-md-3' style='padding-left:0px'>
+					<button class='btn btn-success' style='width:100%; border-top-left-radius: 0px;border-bottom-left-radius: 0px;' ng-click='add(type, value)' ngx-Test>
+						<span class='glyphicon glyphicon-ok'></span>
+					</button>
+				</div>
+			</div>
+			
+
+			<div class='row' ng-controller='ContactsController'>
+				<table class="table table-striped">
+			      <thead>
+			        <tr>
+			          <th style='text-align:center;'>Type</th>
+			          <th style='text-align:center;'>Contact</th>
+			          <th style='text-align:right;'>Controls</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	<tr ng-repeat='contact in contacts track by contact.id'>
+			      		<td style='text-align:center;'>{{contact.type}}</td>
+			      		<td style='text-align:center;'>{{contact.value}}</td>
+			      		<td style='text-align:right;'>
+			      			<button class='btn btn-danger' ng-click='remove(contact.id)'><span class='glyphicon glyphicon-trash'></span></button>
+			      			<button class='btn btn-default' ng-click='orderUp(contact.id)'><span class='glyphicon glyphicon-chevron-up'></span></button>
+			      			<button class='btn btn-default' ng-click='orderDown(contact.id)'><span class='glyphicon glyphicon-chevron-down'></span></button></td>
+			      	</tr>
+			      </tbody>
+			    </table>
+			</div>
+		</div>
+		<div class='col-md-2'></div>
 	</div>
-	<div ng-controller='ContactsController'>
-		<div ng-repeat='contact in contacts'>{{contact.type}} : {{contact.value}}</div>
-	</div>
+	
+	
+	<script type="text/javascript" src='js/jquery.js'></script>
+	<script type="text/javascript" src='js/bootstrap.min.js'></script>
 	<script type="text/javascript" src='js/angular.min.js'></script>
-	<script type="text/javascript" src ='js/options.js'></script>
+	<script type="text/javascript" src='js/ui-bootstrap-tpls-0.10.0.min.js'></script>
+	<script type="text/javascript" src='js/options.js'></script>
 </body>
 </html>

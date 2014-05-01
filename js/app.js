@@ -1,11 +1,7 @@
 $(document).ready(function() 
 {
-	var contacts = [
-		{type:"site", value:"http://ramshteks.com"},
-		{type:"skype", value:"shirobok-pavel"},
-		{type:"email", value:"pavel.shirobok@gmail.com"}
-	];
-	
+	var contacts = JSON.parse(localStorage['list']);
+
 	var str='';
 	for(var i = 0; i < contacts.length; i++){
         var item = contacts[i];
